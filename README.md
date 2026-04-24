@@ -1,4 +1,4 @@
-# 设计竞品素材研究（Design_Research）
+# 设计竞品素材研究（design-research）
 
 用于围绕某个 app / web 功能做竞品设计研究，重点不是泛分析，而是帮助设计师或产品同学快速找到可直接参考的界面截图、使用视频和页面级证据。
 
@@ -36,15 +36,15 @@
 ### 推荐指令
 
 ```text
-Use $Design_Research to find competitor UI for Shopee Express delivery notification in Southeast Asia.
+Use $design-research to find competitor UI for Shopee Express delivery notification in Southeast Asia.
 ```
 
 ```text
-Use $Design_Research to find screenshots and usage videos for trunk logistics task homepages in China.
+Use $design-research to find screenshots and usage videos for trunk logistics task homepages in China.
 ```
 
 ```text
-Use $Design_Research to research competitor job-list homepages for third-party workers in Southeast Asia.
+Use $design-research to research competitor job-list homepages for third-party workers in Southeast Asia.
 ```
 
 ### 输入建议

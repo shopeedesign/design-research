@@ -1,9 +1,9 @@
 ---
-name: "Design_Research"
+name: "design-research"
 description: "Use this skill when the user wants competitor design research for an app or web product feature, especially to find relevant competitor products and collect interface screenshots, usage videos, and page-level evidence for a specific module or flow."
 ---
 
-# Design_Research
+# design-research
 
 Use this skill when a user wants to research how competitor products implement a specific app or web feature through concrete evidence such as screenshots, walkthrough videos, and page-level interface sources.
 
