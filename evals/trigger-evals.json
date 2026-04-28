@@ -1,0 +1,82 @@
+[
+  {
+    "query": "帮我看看主流外卖 App 的订单追踪页怎么设计，最好能找到截图或者录屏，不要只给我文字分析",
+    "should_trigger": true
+  },
+  {
+    "query": "我们要改版邀请成员流程，想参考 Slack、Notion、Figma 是怎么做权限、邀请中状态和错误提示的",
+    "should_trigger": true
+  },
+  {
+    "query": "找几个电商结账页优惠码输入和校验失败的真实界面，移动端优先，能有视频最好",
+    "should_trigger": true
+  },
+  {
+    "query": "想看看 Duolingo、Calm、Headspace 这类订阅付费墙怎么做恢复购买和取消提示，有没有可看的截图案例",
+    "should_trigger": true
+  },
+  {
+    "query": "我们在做 B 端 CSV 批量导入，想找 Airtable、HubSpot、Shopify 的字段映射和错误修正流程参考",
+    "should_trigger": true
+  },
+  {
+    "query": "找一些 App 里空状态、错误状态、加载失败的竞品设计案例，最好是具体页面截图，不要泛泛总结",
+    "should_trigger": true
+  },
+  {
+    "query": "老板让我看一下竞品退款进度页面都怎么展示节点和状态，能不能帮我搜真实 UI 证据",
+    "should_trigger": true
+  },
+  {
+    "query": "我们做司机端接单后的异常上报流程，想参考 Uber Driver、DoorDash Dasher 这类产品的界面和操作视频",
+    "should_trigger": true
+  },
+  {
+    "query": "看下 Linear、Jira、Asana 在任务筛选器保存和分享这个流程上怎么设计，有帮助中心截图也行",
+    "should_trigger": true
+  },
+  {
+    "query": "我需要一些真实竞品页面证据来支撑设计评审，主题是移动银行 App 的转账失败和重试流程",
+    "should_trigger": true
+  },
+  {
+    "query": "分析一下中国外卖平台的市场规模、商业模式和未来三年的增长机会",
+    "should_trigger": false
+  },
+  {
+    "query": "列一下国内外主要协作工具的竞品名单，不需要截图，给我公司名称和官网就行",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我写一份 Notion、Slack、Figma 的品牌定位和用户人群分析",
+    "should_trigger": false
+  },
+  {
+    "query": "我已经有 20 张 App 截图了，帮我把这些截图里的文字提取出来并整理成表格",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我根据这份 PRD 输出设计简报，包括背景、业务流程、功能点和待确认问题",
+    "should_trigger": false
+  },
+  {
+    "query": "评审一下我这张 Figma 设计稿有没有视觉层级、间距和交互问题",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我设计一个优惠码输入组件，直接给我 React 代码和 CSS",
+    "should_trigger": false
+  },
+  {
+    "query": "把这个竞品分析报告翻译成中文，保持原有表格格式",
+    "should_trigger": false
+  },
+  {
+    "query": "我想知道 App Store 上 Headspace 最近几个版本更新了什么功能，帮我总结版本记录",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我做一份外卖行业竞品 SWOT 分析，重点看品牌、价格和渠道策略",
+    "should_trigger": false
+  }
+]

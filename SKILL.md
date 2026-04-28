@@ -1,146 +1,251 @@
 ---
-name: "design-research"
-description: "Use this skill when the user wants competitor design research for an app or web product feature, especially to find relevant competitor products and collect interface screenshots, usage videos, and page-level evidence for a specific module or flow."
+name: design-research
+description: "当用户要为 App 或网页产品的具体功能、页面、状态或流程寻找竞品 UI 参考时使用。Use for competitor UI screenshots, competitor interface references, walkthrough videos, screen recordings, operation videos, user journey videos, product flow examples, app screenshots, help-center UI evidence, and page-level design research links. 主动推断竞品，搜索并核验截图、录屏、教程/使用视频、应用商店、帮助中心或页面级案例等界面素材，按竞品分组返回可判断价值的链接；不要扩展成市场研究或商业策略分析。"
 ---
 
 # design-research
 
-Use this skill when a user wants to research how competitor products implement a specific app or web feature through concrete evidence such as screenshots, walkthrough videos, and page-level interface sources.
+使用此 skill 研究竞品如何处理某个具体产品功能、模块、页面、状态或交互流程，并收集真实界面素材。
 
-This skill is for evidence gathering, not broad market analysis. Prefer results that show real interfaces, real flows, and real interactions.
+重点关注能够帮助用户查看真实 UI 与交互行为的素材：截图、屏幕录制、使用流程视频、应用商店截图、带可见界面的帮助中心页面、展示真实 UI 的产品页面，以及结构化页面级参考资料。不要把任务扩展成宽泛的市场研究、商业策略分析或泛泛的竞品分析。
 
-## What to ask for first
+## 适用边界
 
-Ask for these inputs when they are missing, but do not block the task if the user prefers to stay broad:
+适合处理：
 
-- current product name
-- target module or feature
-- optional region or market
-- optional preferred evidence type such as videos, screenshots, or both
+- 找某个功能、页面、状态或流程的竞品 UI 参考。
+- 收集截图、屏幕录制、教程视频、用户使用视频、应用商店截图、帮助中心页面或页面级案例。
+- 比较不同竞品在同一流程中的信息结构、入口、状态反馈、错误处理或关键交互。
+- 为产品设计、交互设计、页面改版、功能补齐或设计评审提供外部参考素材。
 
-Guide the user toward narrower feature descriptions because smaller scopes produce better results. Good examples:
+不适合处理：
 
-- `delivery notification`
-- `out for delivery page`
-- `contact rider`
-- `failed delivery flow`
-- `subscription paywall`
-- `refund status page`
+- 泛泛的市场规模、商业模式、增长策略或品牌定位分析。
+- 只需要列竞品名称、不需要界面素材的普通竞品调研。
+- 没有明确产品类别、功能范围或页面对象的开放式行业研究。
 
-If the user keeps the scope broad, continue anyway and focus on the most likely subflows.
+## 能力前提与降级策略
 
-## Core workflow
+此 skill 最好在具备联网搜索、打开网页、查看图片或视频缩略图/页面内容的环境中使用。
 
-1. Infer the likely product category and the feature the user actually wants to study.
-2. Infer a small set of the most relevant competitors. Do not wait for the user to list competitor names.
-3. Prioritize competitors by feature relevance, not by market size alone.
-4. Search for evidence in three modules:
-   - `应用商店相关`: broad reference sources such as app stores, official sites, and APK or app aggregation pages
-   - `视频或者直接使用视角`: videos that show real interfaces or real usage flows
-   - `其他相关截图等`: screenshot or page-evidence sources that show relevant screens
-5. Return a table grouped by competitor.
+如果当前环境不能联网、不能打开候选页面，或无法查看视频/图片内容：
 
-## Search principles
+- 明确说明限制。
+- 不要假装已经核验链接或看过界面内容。
+- 可改为输出搜索词、候选来源、推荐检索路径和需要用户手动核验的素材清单。
+- 只有在标题、摘要、可见页面内容、截图、字幕、缩略图或媒体内容足以支持判断时，才给出 `high fit` 或 `medium fit` 标签。
 
-- Search for evidence, not general information.
-- Prefer real interface views and real usage flows.
-- Treat region as a relevance signal, not a hard-coded source map.
-- Start with broadly available sources, then expand to regionally useful channels when needed.
-- Encourage the user to provide a market or region because that usually improves relevance and reduces noise.
+## 默认处理方式
 
-## Competitor selection
+优先做合理推断并开始研究，不要轻易停下来追问。
 
-Pick a focused set of competitors that are most worth searching:
+只有当目标功能或模块过于模糊、无法进行有效搜索时，才向用户提出澄清问题。如果缺少产品名称、市场、地区、平台或偏好的素材类型，应先做合理默认假设，并在最终回答中简短说明。
 
-- direct competitors
-- strong same-feature references
-- adjacent products with especially relevant interaction patterns
+当用户给出的主题较宽泛时，先将其收窄到最可能有价值的子流程再搜索。好的范围示例包括：
 
-Do not optimize for the longest competitor list. Optimize for the most useful evidence.
+- `配送通知功能`
+- `订单追踪页面`
+- `联系骑手交互`
+- `配送失败流程`
+- `订阅付费墙`
+- `退款状态页面`
+- `结账优惠码`
+- `邀请团队成员交互`
+- `批量导入错误状态`
 
-Default to roughly `5-8` competitors unless the user asks for a larger sweep.
+## 工作流程
 
-## Evidence modules
+1. 识别用户的产品类别、目标功能、平台范围和目标市场。
+2. 如果用户没有给出范围，根据用户语言、产品名称、功能场景和平台线索推断市场；无法判断时默认优先查找全球来源，并把中文来源作为补充，在结果开头说明假设。
+3. 推断 5-8 个相关竞品，除非用户要求更宽或更窄的范围。
+4. 按功能相似度、交互参考价值和素材可获得性确定优先级，而不是只按市场规模排序。
+5. 将目标功能翻译成产品中更可能出现的术语，再开始搜索。
+6. 在三个来源模块中搜索：
+   - `应用商店相关`：应用商店、官方网站、帮助中心、APK 或应用聚合页面、版本记录和官方截图。
+   - `视频或者直接使用视角`：屏幕录制、使用 walkthrough、教程、带可见 UI 的用户评测、引导视频和真实操作片段。
+   - `其他相关截图等`：截图合集、页面画廊、UI 拆解文章、带界面图片的帮助文档、应用镜像页面和页面级参考资料。
+7. 在可能的情况下打开并检查候选链接。只有当标题、页面内容、缩略图、截图、字幕或可见媒体能支持 fit 标签时，才返回该链接。
+8. 按竞品分组返回简洁结果，并说明覆盖不足。
+
+## 搜索策略
+
+搜索素材，而不是搜索泛泛介绍。使用以下组合：
+
+- 竞品名称 + 目标功能
+- 竞品名称 + 功能同义词
+- 竞品名称 + `screenshot`、`screen recording`、`walkthrough`、`tutorial`、`review`、`demo`、`UI`、`app flow`
+- 竞品名称 + 平台词，例如 `iOS`、`Android`、`web`、`mobile app`、`desktop`
+- 竞品名称 + 状态词，例如 `empty state`、`error state`、`confirmation`、`notification`、`tracking`、`settings`、`checkout`
+- 竞品名称 + 页面词，例如 `flow`、`page`、`screen`、`settings`、`dashboard`、`onboarding`、`payment`
+
+不分地区，优先考虑以下界面素材库或产品截图来源：
+
+- `Mobbin`、`UI Notes`、`Refero`、`App Fuel`、`Design Vault`、`UI Sources`
+
+再根据目标市场选择补充来源：
+
+针对中国市场产品，可考虑以下查询词或来源：
+
+- `花瓣`、`B站`、`小红书`、`知乎`、`抖音`、`应用宝`、`酷安`、`豌豆荚`、产品帮助中心、官方产品页面
+
+针对全球产品，可考虑以下查询词或来源：
+
+- `YouTube`、`TikTok`、`Reddit`、`App Store`、`Google Play`、`Product Hunt`、`Facebook`、官方帮助中心、产品博客、支持文档
+
+搜索前先把功能翻译成产品中更可能出现的术语。例如，`联系骑手` 也可能写作 `contact driver`、`message courier`、`call delivery partner` 或 `rider support`。
+
+如果搜索结果过弱，调整策略：
+
+- 从功能词改搜页面词或状态词。
+- 从直接竞品扩展到相邻产品。
+- 从中文词扩展到英文词，或反向处理。
+- 从官方来源扩展到用户 walkthrough、教程、应用镜像页、截图合集。
+- 限定站点搜索，例如 `site:youtube.com`、`site:support.example.com`、`site:apps.apple.com`。
+
+## 竞品选择
+
+从三类对象中选择竞品：
+
+- 优先选择同一产品类别中的直接竞品。
+- 功能高度相似的产品，即使产品类别相邻但不完全相同。
+- 对目标流程具有高参考价值的交互模式相似产品。
+
+不要追求竞品数量最大化，要追求素材有用性最大化。如果某个知名竞品没有可用的目标功能素材，可以省略，或明确说明没有找到 high fit 素材。
+
+在表格前加入一句简短说明，解释竞品选择逻辑，例如：
+
+`我优先选择了直接竞品，其次补充了在追踪与通知模式上相似的邻近产品。`
+
+## 素材质量
+
+对视频、截图和页面级素材使用严格的 fit 标签：
+
+- `high fit`：清晰展示目标功能、页面、状态或交互。
+- `medium fit`：展示了真实 UI 或相关流程，但没有直接展示精确的目标功能。
+- `low fit`：弱相关。除非用户明确要求更宽泛的参考，否则不要返回。
+- `do not return`：纯宣传、没有可见界面、没有真实使用过程、无法核验、不相关，或弱到无法帮助用户判断。
+
+宁可留空，也不要用低价值链接填充单元格。
+
+不要返回：
+
+- 没有可见 UI 的纯品牌广告。
+- 没有屏幕内容的口播视频。
+- 没有展示目标流程的泛产品页面。
+- 没有截图、视频或具体页面素材的讨论帖。
+- 无法从标题、摘要、页面内容、缩略图、字幕或可见媒体判断相关性的链接。
+
+## 素材核验
+
+返回链接前，尽量确认以下信息：
+
+- 素材类型：截图、视频、帮助文档、应用商店截图、官方页面、用户教程等。
+- 可见内容：具体看到了哪个页面、状态、控件、入口、流程片段或交互动作。
+- 匹配原因：它为什么对用户的目标功能有参考价值。
+- 局限性：是否只展示相邻流程、旧版本、不同地区、不同平台，或只间接相关。
+- 元信息：尽量确认平台、地区、版本、发布时间或访问日期；无法确认时不要猜测。
+
+不要把搜索结果标题当成事实。只有当可见素材支持时，才说“展示了某流程”或“包含某状态”。
+
+## 素材模块
 
 ### 应用商店相关
 
-Use this as lightweight background evidence:
+作为轻量背景素材使用。好的来源包括：
 
 - App Store
 - Google Play
-- official product sites or help centers
-- APK or app aggregation pages
+- 官方产品网站
+- 官方帮助中心
+- 版本记录或更新日志
+- 带截图的 APK 或应用聚合页面
 
-Keep this section short. Use it mainly to confirm that a feature exists, capture official screenshots, or extract terminology and version-history clues.
+这一模块应保持简短。用它来确认产品或功能、获取官方截图、识别术语，或寻找版本和历史线索。
 
 ### 视频或者直接使用视角
 
-This section is for videos with clear product value:
+用于具有真实使用价值的素材：
 
-- user walkthroughs
-- tutorials
-- review videos with screen recording
-- real usage clips when the interface is visible
+- 用户 walkthrough
+- 教程
+- 带屏幕录制的产品评测
+- 客户或用户操作视频
+- 来自引导或帮助内容的可见界面片段
 
-Do not return pure brand promos, talking-head videos without interface footage, or vague product hype videos.
+附上 fit 标签和一句相关性理由。示例：
+
+- `high fit: YouTube walkthrough 展示了结账优惠码输入、校验和错误提示 [link]`
+- `medium fit: 展示真实订单追踪流程，但没有出现通知入口 [link]`
 
 ### 其他相关截图等
 
-This section is for screenshot or page-evidence sources:
+用于截图或页面级素材：
 
-- screenshot collections
-- page galleries
-- app mirrors with visible screen sets
-- structured page references that show relevant UI
+- 截图合集
+- UI 拆解文章
+- 带可见界面图片的帮助文档
+- 带页面截图的应用镜像页
+- 页面画廊或 App flow 页面
+- 带真实产品截图的博客文章
 
-Do not return weak single-image marketing assets if they do not help the user inspect the target feature.
+必要时附上 fit 标签和一句相关性理由。
 
-## Relevance rules for videos and screenshots
+## 输出格式
 
-Apply strict filtering to `视频或者直接使用视角` and `其他相关截图等`.
+除非用户要求其他语言，否则用中文返回结果。
 
-Use three levels:
+开头包含：
 
-- `High fit`: clearly shows the target feature, state, page, or interaction
-- `Medium fit`: shows real interface or real flow, but does not directly show the target feature
-- `Do not return`: promo-only, no interface, no real operation, or too weak to justify the click
+- 如果用户没有提供，先用一句话说明你假设的范围、市场、平台和素材偏好。
+- 用一句话说明为什么选择这些竞品。
 
-Examples:
-
-- If the user asks for `notification` and a video is only brand promotion, do not return it.
-- If a result shows real tracking screens but not the notification itself, you may return it only with a note like `medium fit: real tracking UI, but notification not directly shown`.
-
-Prefer leaving cells empty over filling them with weak results.
-
-## Output format
-
-Always return a table with these columns:
+然后返回这个表格：
 
 | Competitor | 应用商店相关 | 视频或者直接使用视角 | 其他相关截图等 |
 |---|---|---|---|
 
-Rules:
+规则：
 
-- one row per competitor
-- leave cells empty when there is no useful result
-- each cell may contain multiple items when they are genuinely useful
-- each item should be short and scannable
-- for `视频或者直接使用视角` and `其他相关截图等`, include fit labels when needed
+- 每个竞品一行。
+- 每个单元格保持简短、易扫读。
+- 只有当多个链接都确实有用时，才在一个单元格中放多个链接。
+- 在有帮助时标明来源名称，例如 `App Store`、`Google Play`、`YouTube`、`B站`、`官方帮助中心`。
+- 对视频、截图和页面级素材使用 fit 标签。
+- 每个 `high fit` 或 `medium fit` 链接都应说明可见素材是什么，而不只是贴链接。
+- 每个 `high fit` 或 `medium fit` 链接尽量标注平台、地区、年份/发布时间或访问日期；无法确认时可简短说明 `平台未确认` 或 `时间未确认`。
+- 没有有价值结果时允许留空。
+- 不要强行为每个竞品填满每种素材类型。
+- 主表只放已核验或有足够可见线索支撑 fit 标签的素材；不要把未核验候选放进主表。
 
-Recommended item pattern inside a cell:
+推荐的单元格模式：
 
-- short description plus link
-- when relevant, add a fit note such as `high fit` or `medium fit`
+- `来源：fit 标签，看到的素材 + 相关性说明 [link]`
 
-Examples:
+示例：
 
-- `high fit: out-for-delivery screen recording [link]`
-- `medium fit: real tracking flow, but notification not directly shown [link]`
+- `YouTube: high fit，展示实时骑手追踪地图和联系按钮 [link]`
+- `官方帮助中心: medium fit，展示通知设置入口，但没有展示配送 push 文案 [link]`
+- `App Store: medium fit，截图包含订单状态页面，可辅助确认移动端信息层级 [link]`
 
-## Quality bar
+必要时，在表格后增加一个简短的 `覆盖不足` 说明：
 
-- Do not overwhelm the user with low-value links.
-- Do not force every competitor to have results in every module.
-- Do not treat generic discussion threads as main evidence.
-- Prefer fewer, higher-signal results over long noisy lists.
-- Make it easy for the user to decide what is worth opening first.
+- 列出没有找到 high fit 结果的竞品或素材模块。
+- 说明结果是否存在地区偏向、时间较旧，或只是间接相关。
+- 如果用户想继续深入，建议下一步更收窄的搜索方向。
+
+必要时，再增加一个独立的 `待核验线索` 小节：
+
+- 只放可能相关、但当前环境无法打开或无法确认可见内容的候选链接或搜索方向。
+- 明确说明为什么未核验，例如无法访问页面、视频内容不可见、只有标题摘要、需要登录或地区受限。
+- 给出用户可继续查证的关键词或来源。
+- 不要给这些线索标 `high fit` 或 `medium fit`，也不要把它们当作已确认设计素材。
+
+## 质量标准
+
+- 返回更少但更强的链接，而不是冗长嘈杂的列表。
+- 对链接进行足够核验，以支撑 fit 标签。
+- 不要编造链接、标题、页面内容、截图或视频细节。
+- 除非可见内容、字幕、标题、描述或缩略图能支持判断，否则不要声称某个视频展示了某个流程。
+- 除非应用商店或官方网站包含有用截图，否则保持这类素材轻量。
+- 让用户能轻松判断哪些链接最值得先打开。
+- 当素材不足时，明确说不足，而不是用低价值链接凑满表格。

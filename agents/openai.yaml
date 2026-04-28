@@ -1,7 +1,7 @@
 interface:
-  display_name: "design-research"
-  short_description: "Find competitor UI, screenshots, and usage flows"
-  default_prompt: "Use $design-research to find competitor interface screenshots, usage videos, and page-level evidence for a product feature."
+  display_name: "Design Research"
+  short_description: "Find competitor UI screenshots and videos"
+  default_prompt: "Use $design-research to find competitor UI screenshots, walkthrough videos, and page-level evidence for a specific product feature."
 
 policy:
   allow_implicit_invocation: true
