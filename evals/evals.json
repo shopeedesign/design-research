@@ -69,6 +69,9 @@
           "text": "如果返回花瓣或 Pinterest 链接，应将其标注为画板、board 或素材集合，而不是单张界面。"
         },
         {
+          "text": "如果返回 Pinterest board，应避免假设存在 pinterest.com/boards 路径，并优先识别 pinterest.com/{user}/{board-slug}/ 这类公开 board URL。"
+        },
+        {
           "text": "输出应在素材不足时说明不足，并建议下一步更收窄的搜索方向。"
         }
       ]
