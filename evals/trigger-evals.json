@@ -40,6 +40,10 @@
     "should_trigger": true
   },
   {
+    "query": "帮我搜索二手平台 App 的 UI 资源，尤其想看闲鱼、转转有没有花瓣画板或截图合集",
+    "should_trigger": true
+  },
+  {
     "query": "分析一下中国外卖平台的市场规模、商业模式和未来三年的增长机会",
     "should_trigger": false
   },
